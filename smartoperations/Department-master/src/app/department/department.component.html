@@ -1,0 +1,51 @@
+<mat-card-header>
+  <mat-toolbar class="toolbar">
+    <mat-card-title>Add New Information</mat-card-title>
+    <span class="toolbar-spacer"></span>
+    <mat-icon (click)="onNoClick()">cancel</mat-icon>
+  </mat-toolbar>
+</mat-card-header>
+<mat-card-content>
+  <div class="container">
+    <form #departmentForm="ngForm"  [formGroup]="_contactForm" (ngSubmit)="onSubmit(departmentForm)">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Airport Type</label>
+            <input type="text" formControlName="airportType" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label>Department Name</label>
+            <input type="text" formControlName="departmentName" class="form-control" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let department of filteredOptions | async" [value]="department">{{ department }}</mat-option>
+            </mat-autocomplete>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Service Type</label>
+            <input type="text" formControlName="serviceType" class="form-control" [matAutocomplete]="auto2">
+            <mat-autocomplete #auto2="matAutocomplete" name="AirportType">
+              <mat-option *ngFor="let service of filteredOptions2 | async" [value]="service">{{ service }}</mat-option>
+            </mat-autocomplete>
+          </div>
+          <div class="col-md-6">
+            <label>Skill</label>
+            <input type="text" formControlName="skill" class="form-control">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+          <!-- <button type="submit" class="btn btn-success">
+            <mat-icon>save</mat-icon>
+          </button> -->
+          <button type="submit" mat-button>Save</button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</mat-card-content>

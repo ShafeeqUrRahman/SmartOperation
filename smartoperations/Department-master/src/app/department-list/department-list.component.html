@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-header>
+    <mat-toolbar class="toolbar">
+      <mat-card-title>Department Master</mat-card-title>
+      <span class="toolbar-spacer"></span>
+      <!-- <mat-icon (click)="addDepartment()">add</mat-icon> -->
+      <button mat-button (click)="addDepartment()">Add</button>
+    </mat-toolbar>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <th>Airport Type</th>
+          <th>Department Type</th>
+          <th>Service Type</th>
+          <th>Skill</th>
+        </thead>
+        <tr *ngFor="let Department of _departmentService._departmentList">
+          <td>{{Department.airportType}}</td>
+          <td>{{Department.departmentName}}</td>
+          <td>{{Department.serviceType}}</td>
+          <td>{{Department.skill}}</td>
+
+          <!-- <td><mat-icon (click)="deleteDepartment(Department._id)">delete</mat-icon></td>
+          <td><mat-icon (click)="editDepartment(Department._id)">edit</mat-icon></td> -->
+
+          <td><a class ="action-btn" (click)="editDepartment(Department)">
+            <i class ="material-icons">edit</i></a></td>
+          <td><a class ="action-btn"  (click)="deleteDepartment(Department._id)">
+            <i class ="material-icons">delete</i></a></td>
+        </tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
